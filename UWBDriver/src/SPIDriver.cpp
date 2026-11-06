@@ -6,8 +6,8 @@
 #include <cstring>
 #include <iostream>
 
-SPIDriver::SPIDriver(uint32_t speed, uint8_t mode) 
-    : speed_hz(speed), mode(mode), bits_per_word(8) {
+SPIDriver::SPIDriver() 
+    : speed_hz(2000000), mode(0), bits_per_word(8) { //2MHz datatransferspeed, SPImode 0, bits_per_word 8
     openSPI()
 }
 
@@ -16,20 +16,20 @@ SPIDriver::~SPIDriver() {
 }
 
 bool SPIDriver::openSPI() {
-    // Åben SPI enheden (bruger /dev/spidevX.Y)
-    spi_fd = open("/dev/spidev0.0", O_RDWR); // Tilpas enhed efter behov
+    // åbn SPI enheden. hardcodet til "/dev/spidev0.0" 
+    spi_fd = open("/dev/spidev0.0", O_RDWR);
     if (spi_fd < 0) {
         std::cerr << "Fejl: Kunne ikke åbne SPI enhed." << std::endl;
         return false;
     }
 
-    // Indstil SPI Mode (0, 1, 2 eller 3)
+    // indstil SPI Mode
     if (ioctl(spi_fd, SPI_IOC_WR_MODE, &mode) < 0) return false;
     
-    // Indstil Bits per word (typisk 8 bit)
+    // indstil Bits per word
     if (ioctl(spi_fd, SPI_IOC_WR_BITS_PER_WORD, &bits_per_word) < 0) return false;
     
-    // Indstil Max Speed (Hz)
+    // indstil Max Speed
     if (ioctl(spi_fd, SPI_IOC_WR_MAX_SPEED_HZ, &speed_hz) < 0) return false;
 
     return true;
