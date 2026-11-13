@@ -16,6 +16,7 @@ public:
 
 private:
     Status status;
+
 };
 
 #endif
