@@ -13,7 +13,7 @@ void UI::showDistance(double d)
 
 void UI::showLost()
 {
-    std::cout << "I'm lost... :( trying to reconnection...." << std::endl;
+    std::cout << "I'm lost... :( trying to reconnect...." << std::endl;
 }
 
 void UI::showFound(double RunningTime)
