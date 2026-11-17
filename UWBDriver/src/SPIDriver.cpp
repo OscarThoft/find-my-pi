@@ -6,44 +6,55 @@
 #include <cstring>
 #include <iostream>
 
-SPIDriver::SPIDriver() 
-    : speed_hz(2000000), mode(0), bits_per_word(8) { //2MHz datatransferspeed, SPImode 0, bits_per_word 8
-    openSPI()
+SPIDriver::SPIDriver(uint32_t speed, uint8_t mode, uint8_t bits_per_word)
+    : speed_hz(speed), mode_(mode), bits_per_word_(bits_per_word)
+{ // 3MHz datatransferspeed, SPImode 0, bits_per_word 8
+    openSPI();
 }
 
-SPIDriver::~SPIDriver() {
+      SPIDriver::~SPIDriver()
+{
     closeSPI();
 }
 
-bool SPIDriver::openSPI() {
-    // åbn SPI enheden. hardcodet til "/dev/spidev0.0" 
+bool SPIDriver::openSPI()
+{
+    // åbn SPI enheden. hardcodet til "/dev/spidev0.0"
     spi_fd = open("/dev/spidev0.0", O_RDWR);
-    if (spi_fd < 0) {
+    if (spi_fd < 0)
+    {
         std::cerr << "Fejl: Kunne ikke åbne SPI enhed." << std::endl;
         return false;
     }
 
     // indstil SPI Mode
-    if (ioctl(spi_fd, SPI_IOC_WR_MODE, &mode) < 0) return false;
-    
+    if (ioctl(spi_fd, SPI_IOC_WR_MODE, &mode_) < 0)
+        return false;
+
     // indstil Bits per word
-    if (ioctl(spi_fd, SPI_IOC_WR_BITS_PER_WORD, &bits_per_word) < 0) return false;
-    
+    if (ioctl(spi_fd, SPI_IOC_WR_BITS_PER_WORD, &bits_per_word_) < 0)
+        return false;
+
     // indstil Max Speed
-    if (ioctl(spi_fd, SPI_IOC_WR_MAX_SPEED_HZ, &speed_hz) < 0) return false;
+    if (ioctl(spi_fd, SPI_IOC_WR_MAX_SPEED_HZ, &speed_hz) < 0)
+        return false;
 
     return true;
 }
 
-void SPIDriver::closeSPI() {
-    if (spi_fd >= 0) {
+void SPIDriver::closeSPI()
+{
+    if (spi_fd >= 0)
+    {
         close(spi_fd);
         spi_fd = -1;
     }
-}
+};
 
-bool SPIDriver::transfer(uint8_t* tx_buf, uint8_t* rx_buf, size_t length) {
-    if (spi_fd < 0) return false;
+bool SPIDriver::transfer(uint8_t *tx_buf, uint8_t *rx_buf, size_t length)
+{
+    if (spi_fd < 0)
+        return false;
 
     // spidev_ioc_transfer er den struktur kernelen forventer
     struct spi_ioc_transfer spi;
@@ -53,13 +64,14 @@ bool SPIDriver::transfer(uint8_t* tx_buf, uint8_t* rx_buf, size_t length) {
     spi.rx_buf = (unsigned long)rx_buf;
     spi.len = length;
     spi.speed_hz = speed_hz;
-    spi.bits_per_word = bits_per_word;
-    //spi.delay_usecs = 0;
+    spi.bits_per_word = bits_per_word_;
+    // spi.delay_usecs = 0;
 
     // Udfør selve overførslen i hardwaren
-    if (ioctl(spi_fd, SPI_IOC_MESSAGE(1), &spi) < 0) {
+    if (ioctl(spi_fd, SPI_IOC_MESSAGE(1), &spi) < 0)
+    {
         std::cerr << "Fejl under SPI transfer ioctl." << std::endl;
         return false;
     }
     return true;
-}
+};
