@@ -10,8 +10,8 @@ using namespace std::chrono_literals;
 
 constexpr uint32_t EXPECTED_DEV_ID = 0xDECA0130;
 constexpr uint16_t PAN_ID = 0xDECA;       // fælles netværks-ID, ens på begge moduler
-constexpr uint16_t ANTENNA_DELAY = 16436; // startværdi; kalibreres mod en kendt afstand
-constexpr size_t MAX_DATA_LEN = 128;      // største antal data-bytes i en SPI-overførsel
+constexpr uint16_t ANTENNA_DELAY = 16459; // startværdi; kalibreres mod en kendt afstand
+constexpr size_t MAX_DATA_LEN = 128;  // største antal data-bytes i en SPI-overførsel
 constexpr size_t MAX_HEADER_LEN = 3;      // SPI-headeren er 1-3 bytes
 constexpr auto POLL_INTERVAL = 100us;     // pause mellem to læsninger af SYS_STATUS
 constexpr auto TX_TIMEOUT = 10ms;         // en frame er sendt på under 1 ms
@@ -142,6 +142,7 @@ bool UWBDriver::init(uint16_t shortAddr)
     ok &= writeValue<uint32_t>(REG_AGC_CTRL, SUB_AGC_TUNE2, 0x2502A907);
     ok &= writeValue<uint32_t>(REG_DRX_CONF, SUB_DRX_TUNE2, 0x311A002D);
     ok &= writeValue<uint8_t>(REG_LDE_CTRL, SUB_LDE_CFG1, 0x6D);
+    ok &= writeValue<uint16_t>(REG_LDE_CTRL, SUB_LDE_REPC, 0x451E); // præambelkode 4, 6,8 Mbit/s
     ok &= writeValue<uint16_t>(REG_LDE_CTRL, SUB_LDE_CFG2, 0x1607);
     ok &= writeValue<uint32_t>(REG_TX_POWER, 0, 0x0E082848);
     ok &= writeValue<uint32_t>(REG_RF_CONF, SUB_RF_TXCTRL, 0x001E3FE0);

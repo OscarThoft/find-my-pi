@@ -41,6 +41,7 @@ constexpr uint8_t REG_LDE_CTRL = 0x2E;
 constexpr uint16_t SUB_LDE_CFG1 = 0x0806;
 constexpr uint16_t SUB_LDE_RXANTD = 0x1804;
 constexpr uint16_t SUB_LDE_CFG2 = 0x1806;
+constexpr uint16_t SUB_LDE_REPC = 0x2804; // tærskel for første signal; skal passe til præambelkoden
 
 constexpr uint8_t REG_PMSC = 0x36;
 constexpr uint16_t SUB_PMSC_CTRL0 = 0x00;
