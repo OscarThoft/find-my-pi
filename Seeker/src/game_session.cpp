@@ -1,6 +1,5 @@
 #include "game_session.h"
 #include <chrono>
-#include <iostream>
 
 game_session::game_session() : status(INACTIVE) {}
 
@@ -43,22 +42,10 @@ void game_session::setStatus(Status s) {
     }   
 }
 
-double game_session::getTimeRunning() const {
-    if (startTime == 0.0) {
-        std::cout << "Failed: Time not started \n";
-        return 0.0;
-    }
+double game_session::getStartTime() const {
+    return startTime;
+}
 
-    if(status == FOUND) {
-        return endTime - startTime; //Returnere tiden det tog i sekunder
-    }
-
-    auto duration = std::chrono::duration<double>(
-            std::chrono::steady_clock::now().time_since_epoch()
-        );
-
-    double currentTime = duration.count();
-
-    return currentTime - startTime; //Returnere tiden det har taget foreløbigt
-
+double game_session::getEndTime() const {
+    return endTime;
 }

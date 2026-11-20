@@ -1,4 +1,4 @@
-#include "game_session.h"
+#include "../inc/game_session.h"
 #include <iostream>
 #include <chrono>
 
@@ -21,7 +21,7 @@ int main(){
 
     //Beregn tid brugt:
     std::chrono::duration<double> res_c = std::chrono::duration_cast<std::chrono::duration<double>>(end - start);
-    double res_g = g.getTimeRunning();
+    double res_g = g.getEndTime() - g.getStartTime();
 
     std::cout<<"Time running (game_session): " << res_g << "\n";
     std::cout<<"Time running (chrono): " << res_c.count() << "\n";
@@ -29,7 +29,7 @@ int main(){
 
     //Test af andre funktionaliteter og edge cases:
     g.setStatus(g.INACTIVE);
-    std::cout << "Time running (should return fail message): " << g.getTimeRunning() << "\n";
+    std::cout << "Time running (should return fail message): " << g.getEndTime() - g.getStartTime() << "\n";
 
     g.setStatus(g.RUNNING);
 
@@ -37,15 +37,15 @@ int main(){
         a++;
     }
 
-    std::cout << "Halfway time running: " << g.getTimeRunning() << "\n";
+    std::cout << "Halfway time running: " << g.getEndTime() - g.getStartTime() << "\n";
     g.setStatus(g.RUNNING);
-    std::cout << "Test time is not reset: " << g.getTimeRunning() << "\n";
+    std::cout << "Test time is not reset: " << g.getEndTime() - g.getStartTime() << "\n";
 
     for(int i=0;i <10000000;i++) {
         a++;
     }
 
     g.setStatus(g.FOUND);
-    std::cout << "Full time running: " << g.getTimeRunning() << "\n";
+    std::cout << "Full time running: " << g.getEndTime() - g.getStartTime() << "\n";
 
 }
