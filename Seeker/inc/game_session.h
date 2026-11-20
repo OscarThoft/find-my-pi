@@ -14,6 +14,7 @@ public:
     Status getStatus() const;
 
     double getTimeRunning() const; //Returnerer tiden for den nuværende session
+    //Hvis spillet er igang returnere den tiden indtil videre, hvis status er blevet sat til FOUND 
 
 private:
     Status status;

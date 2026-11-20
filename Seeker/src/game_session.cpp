@@ -1,4 +1,4 @@
-#include "inc/game_session.h"
+#include "game_session.h"
 #include <chrono>
 #include <iostream>
 
@@ -45,11 +45,11 @@ void game_session::setStatus(Status s) {
 
 double game_session::getTimeRunning() const {
     if (startTime == 0.0) {
-        std::cout << "\nTime not started \n";
+        std::cout << "Failed: Time not started \n";
         return 0.0;
     }
 
-    if(endTime != 0.0) {
+    if(status == FOUND) {
         return endTime - startTime; //Returnere tiden det tog i sekunder
     }
 
