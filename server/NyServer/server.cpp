@@ -1,84 +1,95 @@
 #include <iostream>
 #include <string>
+#include <memory>
+#include <functional>
 
-// Gemmer!!!! 
+#include <restinio/all.hpp>
+#include <json_dto/pub.hpp>
+
+#include "GameStatus.h"
+#include "GameData.h"
+
+// Gemmer
+// Med HTTP
 
 namespace rr = restinio::router;
 using router_t = rr::express_router_t<>;
 
-// to string function 
-    std::string to_string(gameStatus::Status status)
+// Konverter enum til string
+std::string to_string(GameStatus::Status status)
 {
     switch (status) {
-        case Status::INACTIVE:    return "Inactive";
-        case Status::RUNNING: return "Running";
-        case Status::FOUND: return "Found";
-        default: return "unknown";
+        case GameStatus::Status::INACTIVE: return "Inactive";
+        case GameStatus::Status::RUNNING:  return "Running";
+        case GameStatus::Status::FOUND:    return "Found";
+        default:                          return "unknown";
     }
 }
 
-// handler game 
+// Handler til spillet
 class GameHandler {
 public:
-explicit GameHandler(GameStatus& status, GameData& data)
-    : m_status{status}, m_data{data}
+    explicit GameHandler(GameStatus& status, GameData& data)
+        : m_status{status}, m_data{data}
     {}
 
- // GameHandler(const GameHandler&) = delete;
- // GameHandler (GameHandler &&) = delete;
+    // GameHandler(const GameHandler&) = delete;
+    // GameHandler(GameHandler&&) = delete;
 
-auto on_gamestart(const restinio::request_handle_t& req, rr::route_params_t) {
-    auto resp = init_resp(req->create_response());
+    auto on_gamestart(const restinio::request_handle_t& req,
+                      rr::route_params_t)
+    {
+        auto resp = req->create_response(restinio::status_no_content());
 
-    // kald funktion der sætter game status = running;
+        // Kald funktionen, der sætter spilstatus til RUNNING
 
-    resp.set_body("\"Game started\"");
-    return resp.done();
- }
+        return resp.done();
+    }
 
- auto on_gamestatus(const restinio::request_handle_t& req, rr::route_params_t) const 
+    auto on_gamestatus(const restinio::request_handle_t& req,
+                       rr::route_params_t) const
     {
         auto resp = init_resp(req->create_response());
 
         GameStateOgData Resp;
-            Resp.state = to_string(m_status.getGameStatus()); 
-            Resp.distance = m_data.getDistance();
+        Resp.state = to_string(m_status.getGameStatus());
+        Resp.distance = m_data.getDistance();
 
         resp.set_body(json_dto::to_json(Resp));
         return resp.done();
-    };
+    }
 
- private:
-    // inkludere instancer af typen GameStatus og GameData 
+private:
+    // Referencer til de eksisterende GameStatus- og GameData-objekter
     GameStatus& m_status;
     GameData& m_data;
 
-    // definere en struct der indeholder status og afstand
-    
-    struct GameStateOgData 
+    // Struct med status og afstand
+    struct GameStateOgData {
+        std::string state;
+        double distance;
+
+        template<typename JSON_IO>
+        void json_io(JSON_IO& io)
         {
-            std::string state; 
-            double distance; 
+            io & json_dto::mandatory("state", state);
+            io & json_dto::mandatory("distance", distance);
+        }
+    };
 
-            template<typename JSON_IO>
-            void json_io(JSON_IO & io) 
-            {
-                io & json_dto::mandatory("state", state);
-                io & json_dto::mandatory("distance", distance);
-            }    
-        };
-
-    template<typename RESP> static RESP init_resp(RESP resp) 
+    template<typename RESP>
+    static RESP init_resp(RESP resp)
     {
-        resp.append_header("Content-Type", "application/json; charset=utf-8");
+        resp.append_header(
+            "Content-Type", "application/json; charset=utf-8");
+
         return resp;
     }
 };
 
-
-// router 
-
-auto make_router(GameHandler & handler) {
+// Router
+auto make_router(GameHandler& handler)
+{
     auto router = std::make_unique<router_t>();
 
     auto by = [&](auto method) {
@@ -86,11 +97,13 @@ auto make_router(GameHandler & handler) {
         return std::bind(method, &handler, _1, _2);
     };
 
-    router->http_get("/gamestatus", by(&GameHandler::on_gamestatus));
-    router->http_post("/gamestart", by(&GameHandler::on_gamestart));
+    router->http_get(
+        "/gamestatus", by(&GameHandler::on_gamestatus));
 
+    router->http_post(
+        "/gamestart", by(&GameHandler::on_gamestart));
 
-    // hvis ingen router matcher
+    // Hvis ingen route matcher
     router->non_matched_request_handler([](auto req) {
         return req->create_response(restinio::status_not_found())
             .connection_close()
@@ -100,25 +113,24 @@ auto make_router(GameHandler & handler) {
     return router;
 }
 
-// main
-
+// Main til test
 int main()
 {
-    // oprettere tomme/default GameStatus objekter og GameData objecter 
+    // Opret objekter med klassernes default-constructors
     GameStatus status;
     GameData data;
-    
+
     GameHandler handler{status, data};
 
-   using traits_t = restinio::traits_t<
-   restinio::asio_timer_manager_t, 
-   restinio::single_threaded_ostream_logger_t, 
-   router_t>;
+    using traits_t = restinio::traits_t<
+        restinio::asio_timer_manager_t,
+        restinio::single_threaded_ostream_logger_t,
+        router_t>;
 
-   restinio::run(
-      restinio::on_this_thread<traits_t>()
-         .address("0.0.0.0")
-         .port(9000)
-         .request_handler(make_router(handler))
-   );
+    restinio::run(
+        restinio::on_this_thread<traits_t>()
+            .address("0.0.0.0")
+            .port(9000)
+            .request_handler(make_router(handler))
+    );
 }
