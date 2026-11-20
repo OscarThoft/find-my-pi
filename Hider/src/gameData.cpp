@@ -2,10 +2,11 @@
 #include <cstdint>
 
 
-double gameData::ProcessData(int64_t t1, int64_t t2, int64_t t3, int64_t t4){
-    
+void gameData::ProcessData(int64_t t1, int64_t t2, int64_t t3, int64_t t4, int64_t t5, int64_t t6){
+    double T_round = t6-t1;
+    double T_reply = (t5+t3)/2-(t4+t2)/2;
     //udregner ToF. (T_round - T_reply)/2
-    double ToF = ((t4 - t1) - (t3 - t2)) / 2.0;
+    double ToF = (T_round - T_reply) / 2.0;
     //sætter ToF fra pikosekunder til sekunder
     ToF *= 1e-12;
     //speed of light
@@ -13,5 +14,8 @@ double gameData::ProcessData(int64_t t1, int64_t t2, int64_t t3, int64_t t4){
 
     //distance udregning
     distanceData = c * ToF;
-    return distanceData;
 };
+
+double gameData::getDistanceData(){
+    return distanceData;
+}
