@@ -2,7 +2,7 @@
 #include <cstdint>
 
 
-double gameData::ProcessData(int64_t t1, int64_t t2, int64_t t3, int64_t t4){
+void gameData::ProcessData(int64_t t1, int64_t t2, int64_t t3, int64_t t4){
     
     //udregner ToF. (T_round - T_reply)/2
     double ToF = ((t4 - t1) - (t3 - t2)) / 2.0;
@@ -13,5 +13,8 @@ double gameData::ProcessData(int64_t t1, int64_t t2, int64_t t3, int64_t t4){
 
     //distance udregning
     distanceData = c * ToF;
-    return distanceData;
 };
+
+double gameData::getDistanceData(){
+    return distanceData;
+}

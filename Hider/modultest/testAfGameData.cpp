@@ -11,8 +11,9 @@ int main() {
     int64_t t4 = 2600;
 
     //beregner distance
-    double distance = data.ProcessData(t1, t2, t3, t4);
+    data.ProcessData(t1, t2, t3, t4);
 
+    double distance = data.getDistanceData();
     std::cout << "Distance: " << distance << " meter" << std::endl;
 
     return 0;
