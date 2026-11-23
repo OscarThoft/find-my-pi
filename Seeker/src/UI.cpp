@@ -23,18 +23,24 @@ void UI::showFound(double RunningTime)
 
 bool UI::startMenu()
 {
-    char s;
+    char x;
     std::cout << "Find my pi\n";
-    std::cout << "Press s to start\n";
-    std::cin >> s;
-    if (s == 's')
+    std::cout << "Press s to start, press q to quit\n";
+    std::cin >> x;
+    if (x == 's')
     {
         std::cout << "Game starting now...";
         return true;
     }
+    else if (x == 'q')
+    {
+        std::cout << "Quiting...";
+        return false;
+    }
     else
     {
         std::cout << "Press s to start";
+        return startMenu();
     }
 }
 
