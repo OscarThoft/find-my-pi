@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/au802788/prj3/find-my-pi/server/NyServer
+CMAKE_SOURCE_DIR = /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/au802788/prj3/find-my-pi/server/NyServer/build
+CMAKE_BINARY_DIR = /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/testServer.dir/depend.make
@@ -73,60 +73,60 @@ CMakeFiles/testServer.dir/codegen:
 .PHONY : CMakeFiles/testServer.dir/codegen
 
 CMakeFiles/testServer.dir/testServer.cpp.o: CMakeFiles/testServer.dir/flags.make
-CMakeFiles/testServer.dir/testServer.cpp.o: /home/au802788/prj3/find-my-pi/server/NyServer/testServer.cpp
+CMakeFiles/testServer.dir/testServer.cpp.o: /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/testServer.cpp
 CMakeFiles/testServer.dir/testServer.cpp.o: CMakeFiles/testServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/au802788/prj3/find-my-pi/server/NyServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/testServer.dir/testServer.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/testServer.dir/testServer.cpp.o -MF CMakeFiles/testServer.dir/testServer.cpp.o.d -o CMakeFiles/testServer.dir/testServer.cpp.o -c /home/au802788/prj3/find-my-pi/server/NyServer/testServer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/testServer.dir/testServer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/testServer.dir/testServer.cpp.o -MF CMakeFiles/testServer.dir/testServer.cpp.o.d -o CMakeFiles/testServer.dir/testServer.cpp.o -c /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/testServer.cpp
 
 CMakeFiles/testServer.dir/testServer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/testServer.dir/testServer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/au802788/prj3/find-my-pi/server/NyServer/testServer.cpp > CMakeFiles/testServer.dir/testServer.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/testServer.cpp > CMakeFiles/testServer.dir/testServer.cpp.i
 
 CMakeFiles/testServer.dir/testServer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/testServer.dir/testServer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/au802788/prj3/find-my-pi/server/NyServer/testServer.cpp -o CMakeFiles/testServer.dir/testServer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/testServer.cpp -o CMakeFiles/testServer.dir/testServer.cpp.s
 
 CMakeFiles/testServer.dir/external/llhttp/api.c.o: CMakeFiles/testServer.dir/flags.make
-CMakeFiles/testServer.dir/external/llhttp/api.c.o: /home/au802788/prj3/find-my-pi/server/NyServer/external/llhttp/api.c
+CMakeFiles/testServer.dir/external/llhttp/api.c.o: /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/llhttp/api.c
 CMakeFiles/testServer.dir/external/llhttp/api.c.o: CMakeFiles/testServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/au802788/prj3/find-my-pi/server/NyServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/testServer.dir/external/llhttp/api.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/testServer.dir/external/llhttp/api.c.o -MF CMakeFiles/testServer.dir/external/llhttp/api.c.o.d -o CMakeFiles/testServer.dir/external/llhttp/api.c.o -c /home/au802788/prj3/find-my-pi/server/NyServer/external/llhttp/api.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/testServer.dir/external/llhttp/api.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/testServer.dir/external/llhttp/api.c.o -MF CMakeFiles/testServer.dir/external/llhttp/api.c.o.d -o CMakeFiles/testServer.dir/external/llhttp/api.c.o -c /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/llhttp/api.c
 
 CMakeFiles/testServer.dir/external/llhttp/api.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/testServer.dir/external/llhttp/api.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/au802788/prj3/find-my-pi/server/NyServer/external/llhttp/api.c > CMakeFiles/testServer.dir/external/llhttp/api.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/llhttp/api.c > CMakeFiles/testServer.dir/external/llhttp/api.c.i
 
 CMakeFiles/testServer.dir/external/llhttp/api.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/testServer.dir/external/llhttp/api.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/au802788/prj3/find-my-pi/server/NyServer/external/llhttp/api.c -o CMakeFiles/testServer.dir/external/llhttp/api.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/llhttp/api.c -o CMakeFiles/testServer.dir/external/llhttp/api.c.s
 
 CMakeFiles/testServer.dir/external/llhttp/http.c.o: CMakeFiles/testServer.dir/flags.make
-CMakeFiles/testServer.dir/external/llhttp/http.c.o: /home/au802788/prj3/find-my-pi/server/NyServer/external/llhttp/http.c
+CMakeFiles/testServer.dir/external/llhttp/http.c.o: /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/llhttp/http.c
 CMakeFiles/testServer.dir/external/llhttp/http.c.o: CMakeFiles/testServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/au802788/prj3/find-my-pi/server/NyServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/testServer.dir/external/llhttp/http.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/testServer.dir/external/llhttp/http.c.o -MF CMakeFiles/testServer.dir/external/llhttp/http.c.o.d -o CMakeFiles/testServer.dir/external/llhttp/http.c.o -c /home/au802788/prj3/find-my-pi/server/NyServer/external/llhttp/http.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/testServer.dir/external/llhttp/http.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/testServer.dir/external/llhttp/http.c.o -MF CMakeFiles/testServer.dir/external/llhttp/http.c.o.d -o CMakeFiles/testServer.dir/external/llhttp/http.c.o -c /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/llhttp/http.c
 
 CMakeFiles/testServer.dir/external/llhttp/http.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/testServer.dir/external/llhttp/http.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/au802788/prj3/find-my-pi/server/NyServer/external/llhttp/http.c > CMakeFiles/testServer.dir/external/llhttp/http.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/llhttp/http.c > CMakeFiles/testServer.dir/external/llhttp/http.c.i
 
 CMakeFiles/testServer.dir/external/llhttp/http.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/testServer.dir/external/llhttp/http.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/au802788/prj3/find-my-pi/server/NyServer/external/llhttp/http.c -o CMakeFiles/testServer.dir/external/llhttp/http.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/llhttp/http.c -o CMakeFiles/testServer.dir/external/llhttp/http.c.s
 
 CMakeFiles/testServer.dir/external/llhttp/llhttp.c.o: CMakeFiles/testServer.dir/flags.make
-CMakeFiles/testServer.dir/external/llhttp/llhttp.c.o: /home/au802788/prj3/find-my-pi/server/NyServer/external/llhttp/llhttp.c
+CMakeFiles/testServer.dir/external/llhttp/llhttp.c.o: /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/llhttp/llhttp.c
 CMakeFiles/testServer.dir/external/llhttp/llhttp.c.o: CMakeFiles/testServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/au802788/prj3/find-my-pi/server/NyServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/testServer.dir/external/llhttp/llhttp.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/testServer.dir/external/llhttp/llhttp.c.o -MF CMakeFiles/testServer.dir/external/llhttp/llhttp.c.o.d -o CMakeFiles/testServer.dir/external/llhttp/llhttp.c.o -c /home/au802788/prj3/find-my-pi/server/NyServer/external/llhttp/llhttp.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/testServer.dir/external/llhttp/llhttp.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/testServer.dir/external/llhttp/llhttp.c.o -MF CMakeFiles/testServer.dir/external/llhttp/llhttp.c.o.d -o CMakeFiles/testServer.dir/external/llhttp/llhttp.c.o -c /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/llhttp/llhttp.c
 
 CMakeFiles/testServer.dir/external/llhttp/llhttp.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/testServer.dir/external/llhttp/llhttp.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/au802788/prj3/find-my-pi/server/NyServer/external/llhttp/llhttp.c > CMakeFiles/testServer.dir/external/llhttp/llhttp.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/llhttp/llhttp.c > CMakeFiles/testServer.dir/external/llhttp/llhttp.c.i
 
 CMakeFiles/testServer.dir/external/llhttp/llhttp.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/testServer.dir/external/llhttp/llhttp.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/au802788/prj3/find-my-pi/server/NyServer/external/llhttp/llhttp.c -o CMakeFiles/testServer.dir/external/llhttp/llhttp.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/llhttp/llhttp.c -o CMakeFiles/testServer.dir/external/llhttp/llhttp.c.s
 
 # Object files for target testServer
 testServer_OBJECTS = \
@@ -145,7 +145,7 @@ testServer: CMakeFiles/testServer.dir/external/llhttp/llhttp.c.o
 testServer: CMakeFiles/testServer.dir/build.make
 testServer: CMakeFiles/testServer.dir/compiler_depend.ts
 testServer: CMakeFiles/testServer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/au802788/prj3/find-my-pi/server/NyServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable testServer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable testServer"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/testServer.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -157,6 +157,6 @@ CMakeFiles/testServer.dir/clean:
 .PHONY : CMakeFiles/testServer.dir/clean
 
 CMakeFiles/testServer.dir/depend:
-	cd /home/au802788/prj3/find-my-pi/server/NyServer/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/au802788/prj3/find-my-pi/server/NyServer /home/au802788/prj3/find-my-pi/server/NyServer /home/au802788/prj3/find-my-pi/server/NyServer/build /home/au802788/prj3/find-my-pi/server/NyServer/build /home/au802788/prj3/find-my-pi/server/NyServer/build/CMakeFiles/testServer.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/build /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/build /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/build/CMakeFiles/testServer.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/testServer.dir/depend
 

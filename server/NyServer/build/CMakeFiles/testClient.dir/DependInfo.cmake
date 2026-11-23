@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/au802788/prj3/find-my-pi/server/NyServer/testClient.cpp" "CMakeFiles/testClient.dir/testClient.cpp.o" "gcc" "CMakeFiles/testClient.dir/testClient.cpp.o.d"
+  "/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/testClient.cpp" "CMakeFiles/testClient.dir/testClient.cpp.o" "gcc" "CMakeFiles/testClient.dir/testClient.cpp.o.d"
   "" "testClient" "gcc" "CMakeFiles/testClient.dir/link.d"
   )
 

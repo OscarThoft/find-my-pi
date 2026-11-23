@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/au802788/prj3/find-my-pi/server/NyServer
+CMAKE_SOURCE_DIR = /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/au802788/prj3/find-my-pi/server/NyServer/build
+CMAKE_BINARY_DIR = /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -88,14 +88,14 @@ clean: CMakeFiles/testClient.dir/clean
 CMakeFiles/testServer.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/testServer.dir/build.make CMakeFiles/testServer.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/testServer.dir/build.make CMakeFiles/testServer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/au802788/prj3/find-my-pi/server/NyServer/build/CMakeFiles --progress-num=3,4,5,6,7 "Built target testServer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/build/CMakeFiles --progress-num=3,4,5,6,7 "Built target testServer"
 .PHONY : CMakeFiles/testServer.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/testServer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/au802788/prj3/find-my-pi/server/NyServer/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/testServer.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/au802788/prj3/find-my-pi/server/NyServer/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/build/CMakeFiles 0
 .PHONY : CMakeFiles/testServer.dir/rule
 
 # Convenience name for target.
@@ -105,7 +105,7 @@ testServer: CMakeFiles/testServer.dir/rule
 # codegen rule for target.
 CMakeFiles/testServer.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/testServer.dir/build.make CMakeFiles/testServer.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/au802788/prj3/find-my-pi/server/NyServer/build/CMakeFiles --progress-num=3,4,5,6,7 "Finished codegen for target testServer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/build/CMakeFiles --progress-num=3,4,5,6,7 "Finished codegen for target testServer"
 .PHONY : CMakeFiles/testServer.dir/codegen
 
 # clean rule for target.
@@ -120,14 +120,14 @@ CMakeFiles/testServer.dir/clean:
 CMakeFiles/testClient.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/testClient.dir/build.make CMakeFiles/testClient.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/testClient.dir/build.make CMakeFiles/testClient.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/au802788/prj3/find-my-pi/server/NyServer/build/CMakeFiles --progress-num=1,2 "Built target testClient"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/build/CMakeFiles --progress-num=1,2 "Built target testClient"
 .PHONY : CMakeFiles/testClient.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/testClient.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/au802788/prj3/find-my-pi/server/NyServer/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/testClient.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/au802788/prj3/find-my-pi/server/NyServer/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/build/CMakeFiles 0
 .PHONY : CMakeFiles/testClient.dir/rule
 
 # Convenience name for target.
@@ -137,7 +137,7 @@ testClient: CMakeFiles/testClient.dir/rule
 # codegen rule for target.
 CMakeFiles/testClient.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/testClient.dir/build.make CMakeFiles/testClient.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/au802788/prj3/find-my-pi/server/NyServer/build/CMakeFiles --progress-num=1,2 "Finished codegen for target testClient"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/build/CMakeFiles --progress-num=1,2 "Finished codegen for target testClient"
 .PHONY : CMakeFiles/testClient.dir/codegen
 
 # clean rule for target.

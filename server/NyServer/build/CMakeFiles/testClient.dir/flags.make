@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/au802788/prj3/find-my-pi/server/NyServer/external/json_dto -I/home/au802788/prj3/find-my-pi/server/NyServer/external/rapidjson
+CXX_INCLUDES = -I/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/json_dto -I/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/rapidjson
 
 CXX_FLAGS = -std=gnu++20
 
