@@ -1,19 +1,18 @@
+#include "server.h"
+
 #include <iostream>
-#include <string>
-#include <memory>
 #include <functional>
-
-#include <restinio/all.hpp>
-#include <json_dto/pub.hpp>
-
-#include "GameStatus.h"
-#include "GameData.h"
+#include <memory>
+#include <string>
 
 // Gemmer
 // Med HTTP
 
-namespace rr = restinio::router;
-using router_t = rr::express_router_t<>;
+
+// construktor gem refernecer til status og data
+GameHandler::GameHandler(GameStatus& status, GameData& data)
+        : m_status{status}, m_data{data}
+    {}
 
 // Konverter enum til string
 std::string to_string(GameStatus::Status status)
@@ -26,17 +25,7 @@ std::string to_string(GameStatus::Status status)
     }
 }
 
-// Handler til spillet
-class GameHandler {
-public:
-    explicit GameHandler(GameStatus& status, GameData& data)
-        : m_status{status}, m_data{data}
-    {}
-
-    // GameHandler(const GameHandler&) = delete;
-    // GameHandler(GameHandler&&) = delete;
-
-    auto on_gamestart(const restinio::request_handle_t& req,
+ auto on_gamestart(const restinio::request_handle_t& req,
                       rr::route_params_t)
     {
         auto resp = req->create_response(restinio::status_no_content());
@@ -59,33 +48,6 @@ public:
         return resp.done();
     }
 
-private:
-    // Referencer til de eksisterende GameStatus- og GameData-objekter
-    GameStatus& m_status;
-    GameData& m_data;
-
-    // Struct med status og afstand
-    struct GameStateOgData {
-        std::string state;
-        double distance;
-
-        template<typename JSON_IO>
-        void json_io(JSON_IO& io)
-        {
-            io & json_dto::mandatory("state", state);
-            io & json_dto::mandatory("distance", distance);
-        }
-    };
-
-    template<typename RESP>
-    static RESP init_resp(RESP resp)
-    {
-        resp.append_header(
-            "Content-Type", "application/json; charset=utf-8");
-
-        return resp;
-    }
-};
 
 // Router
 auto make_router(GameHandler& handler)
