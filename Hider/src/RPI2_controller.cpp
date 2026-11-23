@@ -12,7 +12,7 @@ void RPI2_controller::startGame()
     gamestatus.setStatus(gameStatus::Status::RUNNING);
 }
 
-double RPI2_controller::RequestDistanceData()
+double RPI2_controller::requestDistanceData()
 {
     return distanceData;
 }
@@ -29,4 +29,18 @@ void RPI2_controller::buttonPressed()
 void RPI2_controller::initSPI()
 {
     // kald SPI klassen
+}
+
+void RPI2_controller::run() {
+    startGame();
+
+    while(gameStatus::Status::RUNNING) {
+        double currDistance = requestDistanceData();
+        
+
+
+
+
+    }
+
 }

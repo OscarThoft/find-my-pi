@@ -1,11 +1,26 @@
 #include "../inc/soegerController.h"
-#include "../inc/game_session.h"
 #include <iostream>
+#include <unistd.h>
 #include <chrono>
 
-void soegerController::startGame() {
+int soegerController::startGame() {
     initSPI(); 
     session.setStatus(game_session::RUNNING); //Set status til running
+
+    //Etabler forbindelse til serveren
+    socket = client.connectToServer();
+    if (socket < 0)
+    {
+        return -1;
+    }
+
+    if (!client.startGame(socket))
+    {
+        close(socket);
+        return -1;
+    }
+
+    return 1;
 }
 
 void soegerController::initSPI() {
@@ -40,3 +55,17 @@ double soegerController::calculateTime() const {
     return currentTime - startTime; //Returnere tiden det har taget foreløbigt
 
 }
+
+void soegerController::run() 
+{
+    //Initialize client and UWB
+    startGame();
+
+    while(session.getStatus() == game_session::RUNNING) {
+        
+    }
+
+
+
+}
+

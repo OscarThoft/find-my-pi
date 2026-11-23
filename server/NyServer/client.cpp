@@ -1,28 +1,15 @@
 #include <iostream>
-#include <string>
 #include <cstdio>
 #include <exception>
 #include <unistd.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <json_dto/pub.hpp>
+#include "client.h"
 
 // SØGER! med HTTP
 
-struct GameStateOgData
-{
-    std::string state;
-    double distance;
-
-    template <typename JSON_IO>
-    void json_io(JSON_IO &io)
-    {
-        io & json_dto::mandatory("state", state);
-        io & json_dto::mandatory("distance", distance);
-    }
-};
-
-int connectToServer()
+int Client::connectToServer() 
 {
     // 1. Opret en TCP-socket til IPv4
     int clientSocket = socket(AF_INET, SOCK_STREAM, 0);
@@ -59,7 +46,7 @@ int connectToServer()
     return clientSocket;
 }
 
-bool startGame(int clientSocket)
+bool Client::startGame(int clientSocket)
 {
     std::string request =
         "POST /gamestart HTTP/1.1\r\n"
@@ -77,6 +64,7 @@ bool startGame(int clientSocket)
         if (antal <= 0)
         {
             std::cerr << "Kommunikationsfejl ved spilstart\n";
+            close(clientSocket);
             return false;
         }
         sendt += antal;
@@ -92,6 +80,7 @@ bool startGame(int clientSocket)
         if (antal <= 0)
         {
             std::cerr << "Kommunikationsfejl: fejl i svar fra server\n";
+            close(clientSocket);
             return false;
         }
 
@@ -104,13 +93,14 @@ bool startGame(int clientSocket)
         svar.substr(mellemrum + 1, 4) != "204 ")
     {
         std::cerr << "Serveren bekræftede ikke spilstart med 204\n";
+        close(clientSocket);
         return false;
     }
 
     return true;
 }
 
-double getData(int clientSocket)
+double Client::getData(int clientSocket)
 {
     // Lav en string, som vi sender til serveren
     std::string request =
