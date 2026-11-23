@@ -31,7 +31,7 @@ int connectToServer()
     serverAddress.sin_family = AF_INET;
     serverAddress.sin_port = htons(9000);
 
-   if (inet_pton(AF_INET, "172.16.15.2", &serverAddress.sin_addr) != 1) {
+   if (inet_pton(AF_INET, "172.20.10.3", &serverAddress.sin_addr) != 1) {
         std::cerr << "Ugyldig IP-adresse\n";
         close(clientSocket);
         return -1;
@@ -48,7 +48,7 @@ bool startGame(int clientSocket)
 {
     std::string request =
         "POST /gamestart HTTP/1.1\r\n"
-        "Host: 172.16.15.2:9000\r\n"
+        "Host: 172.20.10.3:9000\r\n"
         "Content-Length: 0\r\n"
         "\r\n";
 
@@ -78,7 +78,7 @@ double getData(int clientSocket)
 {
     std::string request =
         "GET /gamestatus HTTP/1.1\r\n"
-        "Host: 172.16.15.2:9000\r\n"
+        "Host: 172.20.10.3:9000\r\n"
         "\r\n";
 
     std::size_t sendt = 0;
@@ -130,7 +130,9 @@ double getData(int clientSocket)
 
 int main()
 {
+    std::cout << "hej:))" << std::endl;
     int clientSocket = connectToServer();
+    std::cout << "connected to server: " << clientSocket << std::endl;
     if (clientSocket < 0)
         return 1;
 

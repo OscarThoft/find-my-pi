@@ -1,4 +1,4 @@
-/home/au802788/prj3/find-my-pi/server/NyServer/build/CMakeFiles/testServer.dir
-/home/au802788/prj3/find-my-pi/server/NyServer/build/CMakeFiles/testClient.dir
-/home/au802788/prj3/find-my-pi/server/NyServer/build/CMakeFiles/edit_cache.dir
-/home/au802788/prj3/find-my-pi/server/NyServer/build/CMakeFiles/rebuild_cache.dir
+/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/build/CMakeFiles/testServer.dir
+/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/build/CMakeFiles/testClient.dir
+/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/build/CMakeFiles/edit_cache.dir
+/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/build/CMakeFiles/rebuild_cache.dir

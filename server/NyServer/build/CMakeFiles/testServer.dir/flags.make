@@ -5,13 +5,13 @@
 # compile CXX with /usr/bin/c++
 C_DEFINES = -DFMT_HEADER_ONLY
 
-C_INCLUDES = -I/home/au802788/prj3/find-my-pi/server/NyServer/external -I/home/au802788/prj3/find-my-pi/server/NyServer/external/restinio -I/home/au802788/prj3/find-my-pi/server/NyServer/external/asio -I/home/au802788/prj3/find-my-pi/server/NyServer/external/fmt -I/home/au802788/prj3/find-my-pi/server/NyServer/external/json_dto -I/home/au802788/prj3/find-my-pi/server/NyServer/external/llhttp -I/home/au802788/prj3/find-my-pi/server/NyServer/external/expected-lite -I/home/au802788/prj3/find-my-pi/server/NyServer/external/rapidjson
+C_INCLUDES = -I/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external -I/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/restinio -I/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/asio -I/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/fmt -I/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/json_dto -I/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/llhttp -I/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/expected-lite -I/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/rapidjson
 
 C_FLAGS = 
 
 CXX_DEFINES = -DFMT_HEADER_ONLY
 
-CXX_INCLUDES = -I/home/au802788/prj3/find-my-pi/server/NyServer/external -I/home/au802788/prj3/find-my-pi/server/NyServer/external/restinio -I/home/au802788/prj3/find-my-pi/server/NyServer/external/asio -I/home/au802788/prj3/find-my-pi/server/NyServer/external/fmt -I/home/au802788/prj3/find-my-pi/server/NyServer/external/json_dto -I/home/au802788/prj3/find-my-pi/server/NyServer/external/llhttp -I/home/au802788/prj3/find-my-pi/server/NyServer/external/expected-lite -I/home/au802788/prj3/find-my-pi/server/NyServer/external/rapidjson
+CXX_INCLUDES = -I/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external -I/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/restinio -I/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/asio -I/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/fmt -I/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/json_dto -I/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/llhttp -I/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/expected-lite -I/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/rapidjson
 
 CXX_FLAGS = -std=gnu++20
 

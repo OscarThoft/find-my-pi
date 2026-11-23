@@ -8,10 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/au802788/prj3/find-my-pi/server/NyServer/external/llhttp/api.c" "CMakeFiles/testServer.dir/external/llhttp/api.c.o" "gcc" "CMakeFiles/testServer.dir/external/llhttp/api.c.o.d"
-  "/home/au802788/prj3/find-my-pi/server/NyServer/external/llhttp/http.c" "CMakeFiles/testServer.dir/external/llhttp/http.c.o" "gcc" "CMakeFiles/testServer.dir/external/llhttp/http.c.o.d"
-  "/home/au802788/prj3/find-my-pi/server/NyServer/external/llhttp/llhttp.c" "CMakeFiles/testServer.dir/external/llhttp/llhttp.c.o" "gcc" "CMakeFiles/testServer.dir/external/llhttp/llhttp.c.o.d"
-  "/home/au802788/prj3/find-my-pi/server/NyServer/testServer.cpp" "CMakeFiles/testServer.dir/testServer.cpp.o" "gcc" "CMakeFiles/testServer.dir/testServer.cpp.o.d"
+  "/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/llhttp/api.c" "CMakeFiles/testServer.dir/external/llhttp/api.c.o" "gcc" "CMakeFiles/testServer.dir/external/llhttp/api.c.o.d"
+  "/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/llhttp/http.c" "CMakeFiles/testServer.dir/external/llhttp/http.c.o" "gcc" "CMakeFiles/testServer.dir/external/llhttp/http.c.o.d"
+  "/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/external/llhttp/llhttp.c" "CMakeFiles/testServer.dir/external/llhttp/llhttp.c.o" "gcc" "CMakeFiles/testServer.dir/external/llhttp/llhttp.c.o.d"
+  "/home/rpinicolai44/PRJ3/find-my-pi/server/NyServer/testServer.cpp" "CMakeFiles/testServer.dir/testServer.cpp.o" "gcc" "CMakeFiles/testServer.dir/testServer.cpp.o.d"
   "" "testServer" "gcc" "CMakeFiles/testServer.dir/link.d"
   )
 
