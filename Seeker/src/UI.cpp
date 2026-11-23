@@ -29,8 +29,8 @@ bool UI::startMenu()
     std::cin >> s;
     if (s == 's')
     {
-        return true;
         std::cout << "Game starting now...";
+        return true;
     }
     else
     {
