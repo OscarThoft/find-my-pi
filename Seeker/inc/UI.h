@@ -11,6 +11,7 @@ public:
     void showLost();
     bool playAgain();
     void showFound(double RunningTime);
+    void connectionFailed();
 };
 
 #endif

@@ -46,10 +46,12 @@ bool UI::playAgain()
 
     if (yn == 'y')
     {
+        std::cout << "Starting game...";
         return true;
     }
     else if (yn == 'n')
     {
+        std::cout << "Thank you for playing <3";
         return false;
     }
     else
@@ -57,4 +59,9 @@ bool UI::playAgain()
         std::cout << "please press y or n";
         return playAgain();
     }
+}
+
+void UI::connectionFailed()
+{
+    std::cout << "Failed to connect with server..";
 }
