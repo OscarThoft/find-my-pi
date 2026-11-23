@@ -9,6 +9,11 @@
 
 // SØGER! med HTTP
 
+// Kør PÅ SERVER "ip -br addr" for at se wifi ip adresser
+//  ret IP-adressen 3 stedet til servers IP
+// ret i inet_pton() og i begge host
+// byg igen ( cmake --build build --target client )
+
 int Client::connectToServer() 
 {
     // 1. Opret en TCP-socket til IPv4
@@ -26,7 +31,7 @@ int Client::connectToServer()
 
     // Omdan IP-adressen fra tekst til binær form,
     // og tjek, om adressens format er gyldigt
-    if (inet_pton(AF_INET, "172.16.15.2",
+    if (inet_pton(AF_INET, "172.16.15.2",  // RET IP ADRESSE HER
                   &serverAddress.sin_addr) != 1)
     {
         std::cerr << "Ugyldig IP adresse\n";
@@ -50,7 +55,7 @@ bool Client::startGame(int clientSocket)
 {
     std::string request =
         "POST /gamestart HTTP/1.1\r\n"
-        "Host: 172.16.15.2:9000\r\n"
+        "Host: 172.16.15.2:9000\r\n"  // ret ip adresse her 
         "Content-Length: 0\r\n"
         "\r\n";
 
@@ -64,7 +69,6 @@ bool Client::startGame(int clientSocket)
         if (antal <= 0)
         {
             std::cerr << "Kommunikationsfejl ved spilstart\n";
-            close(clientSocket);
             return false;
         }
         sendt += antal;
@@ -80,7 +84,6 @@ bool Client::startGame(int clientSocket)
         if (antal <= 0)
         {
             std::cerr << "Kommunikationsfejl: fejl i svar fra server\n";
-            close(clientSocket);
             return false;
         }
 
@@ -93,7 +96,6 @@ bool Client::startGame(int clientSocket)
         svar.substr(mellemrum + 1, 4) != "204 ")
     {
         std::cerr << "Serveren bekræftede ikke spilstart med 204\n";
-        close(clientSocket);
         return false;
     }
 
@@ -105,7 +107,7 @@ double Client::getData(int clientSocket)
     // Lav en string, som vi sender til serveren
     std::string request =
         "GET /gamestatus HTTP/1.1\r\n"
-        "Host: 172.16.15.2:9000\r\n"
+        "Host: 172.16.15.2:9000\r\n" // ret ip adresse her 
         "\r\n";
 
     // Send hele requesten
@@ -158,7 +160,7 @@ double Client::getData(int clientSocket)
             if (svar.size() - (slut + 4) < length)
                 continue;
 
-            auto data = json_dto::from_json<GameStateOgData>(
+            auto data = json_dto::from_json<GameStateAndData>(
                 svar.substr(slut + 4, length));
 
             if (data.state == "Running")
@@ -187,20 +189,23 @@ double Client::getData(int clientSocket)
 
 int main()
 {
-    int clientSocket = connectToServer();
+    Client client;
+
+    int clientSocket = client.connectToServer();
+
     if (clientSocket < 0)
     {
         return 1;
     }
 
-    if (!startGame(clientSocket))
+    if (!client.startGame(clientSocket))
     {
         close(clientSocket);
         return 1;
     }
 
     // Et loop, der:
-    double afstand = getData(clientSocket);
+    double afstand = client.getData(clientSocket);
 
     if (afstand == -1.0)
     {

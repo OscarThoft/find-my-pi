@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
+#include <json_dto/pub.hpp>
 
+// søger h fil 
 
 class Client {
 public:
