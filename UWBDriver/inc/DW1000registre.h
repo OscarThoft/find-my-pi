@@ -17,6 +17,7 @@ constexpr uint8_t REG_RX_TIME = 0x15;
 constexpr uint8_t REG_TX_TIME = 0x17;
 constexpr uint8_t REG_TX_ANTD = 0x18;
 constexpr uint8_t REG_TX_POWER = 0x1E;
+constexpr uint8_t REG_CHAN_CTRL = 0x1F;
 
 constexpr uint8_t REG_AGC_CTRL = 0x23;
 constexpr uint16_t SUB_AGC_TUNE1 = 0x04;
@@ -57,7 +58,7 @@ constexpr uint16_t SYS_CTRL_RXENAB = 0x0100; // bit 8: tænd modtageren
 constexpr uint32_t SYS_STATUS_TXFRS = 0x00000080;       // bit 7:  frame sendt
 constexpr uint32_t SYS_STATUS_LDEDONE = 0x00000400;     // bit 10: modtagetidsstemplet er klar
 constexpr uint32_t SYS_STATUS_RXFCG = 0x00004000;       // bit 14: frame modtaget, CRC ok
-constexpr uint32_t SYS_STATUS_ALL_TX = 0x000000F0;      // alle sende-flag (bit 4-7)
+constexpr uint32_t SYS_STATUS_ALL_TX = 0x000000F8;      // alle sende-flag (bit 3-7)
 constexpr uint32_t SYS_STATUS_ALL_RX_GOOD = 0x00006F00; // alle flag ved en god modtagelse
 constexpr uint32_t SYS_STATUS_ALL_RX_ERR = 0x24059000;  // alle modtagefejl (CRC, header, SFD ...)
 constexpr uint32_t SYS_STATUS_ALL_RX_TO = 0x00220000;   // alle modtage-timeouts
