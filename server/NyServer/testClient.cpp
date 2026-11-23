@@ -8,7 +8,10 @@
 #include <json_dto/pub.hpp>
 
 // SOEGER: 
-// ret IP-adressen alle steder, hvis gemmeren har en anden IP.
+// Kør PÅ SERVER "ip -br addr" for at se wifi ip adresser
+//  ret IP-adressen 3 stedet til servers IP
+// ret i inet_pton() og i begge host
+// byg igen ( cmake --build build --target client )
 
 
 struct GameStateOgData {
@@ -157,6 +160,8 @@ int main()
     while(true) {
     afstand = getData(clientSocket);
 
+
+    double afstand = getData(clientSocket);
     if (afstand == -1.0)
         std::cout << "Gemmeren er fundet!\n";
     else if (afstand == -2.0)

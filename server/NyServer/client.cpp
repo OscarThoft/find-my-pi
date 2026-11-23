@@ -1,28 +1,20 @@
 #include <iostream>
-#include <string>
 #include <cstdio>
 #include <exception>
 #include <unistd.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <json_dto/pub.hpp>
+#include "client.h"
 
 // SØGER! med HTTP
 
-struct GameStateOgData
-{
-    std::string state;
-    double distance;
+// Kør PÅ SERVER "ip -br addr" for at se wifi ip adresser
+//  ret IP-adressen 3 stedet til servers IP
+// ret i inet_pton() og i begge host
+// byg igen ( cmake --build build --target client )
 
-    template <typename JSON_IO>
-    void json_io(JSON_IO &io)
-    {
-        io & json_dto::mandatory("state", state);
-        io & json_dto::mandatory("distance", distance);
-    }
-};
-
-int connectToServer()
+int Client::connectToServer() 
 {
     // 1. Opret en TCP-socket til IPv4
     int clientSocket = socket(AF_INET, SOCK_STREAM, 0);
@@ -39,7 +31,7 @@ int connectToServer()
 
     // Omdan IP-adressen fra tekst til binær form,
     // og tjek, om adressens format er gyldigt
-    if (inet_pton(AF_INET, "172.16.15.2",
+    if (inet_pton(AF_INET, "172.16.15.2",  // RET IP ADRESSE HER
                   &serverAddress.sin_addr) != 1)
     {
         std::cerr << "Ugyldig IP adresse\n";
@@ -59,11 +51,11 @@ int connectToServer()
     return clientSocket;
 }
 
-bool startGame(int clientSocket)
+bool Client::startGame(int clientSocket)
 {
     std::string request =
         "POST /gamestart HTTP/1.1\r\n"
-        "Host: 172.16.15.2:9000\r\n"
+        "Host: 172.16.15.2:9000\r\n"  // ret ip adresse her 
         "Content-Length: 0\r\n"
         "\r\n";
 
@@ -110,12 +102,12 @@ bool startGame(int clientSocket)
     return true;
 }
 
-double getData(int clientSocket)
+double Client::getData(int clientSocket)
 {
     // Lav en string, som vi sender til serveren
     std::string request =
         "GET /gamestatus HTTP/1.1\r\n"
-        "Host: 172.16.15.2:9000\r\n"
+        "Host: 172.16.15.2:9000\r\n" // ret ip adresse her 
         "\r\n";
 
     // Send hele requesten
@@ -168,7 +160,7 @@ double getData(int clientSocket)
             if (svar.size() - (slut + 4) < length)
                 continue;
 
-            auto data = json_dto::from_json<GameStateOgData>(
+            auto data = json_dto::from_json<GameStateAndData>(
                 svar.substr(slut + 4, length));
 
             if (data.state == "Running")
@@ -197,20 +189,23 @@ double getData(int clientSocket)
 
 int main()
 {
-    int clientSocket = connectToServer();
+    Client client;
+
+    int clientSocket = client.connectToServer();
+
     if (clientSocket < 0)
     {
         return 1;
     }
 
-    if (!startGame(clientSocket))
+    if (!client.startGame(clientSocket))
     {
         close(clientSocket);
         return 1;
     }
 
     // Et loop, der:
-    double afstand = getData(clientSocket);
+    double afstand = client.getData(clientSocket);
 
     if (afstand == -1.0)
     {
