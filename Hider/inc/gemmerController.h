@@ -4,10 +4,10 @@
 #include "inc/gameData.h"
 #include "inc/gameStatus.h"
 
-class RPI2_controller
+class gemmerController
 {
 public:
-    RPI2_controller();
+    gemmerController();
     void startGame();
     double requestDistanceData();
     void dataReady();

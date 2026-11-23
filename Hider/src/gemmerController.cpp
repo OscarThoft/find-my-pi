@@ -1,37 +1,37 @@
-#include "inc/RPI2_controller.h"
+#include "inc/gemmerController.h"
 
-RPI2_controller::RPI2_controller()
+gemmerController::gemmerController()
     : rawData(0), distanceData(0.0)
 {
 }
 
-void RPI2_controller::startGame()
+void gemmerController::startGame()
 {
     // send en ack til seeker
     initSPI();
     gamestatus.setStatus(gameStatus::Status::RUNNING);
 }
 
-double RPI2_controller::requestDistanceData()
+double gemmerController::requestDistanceData()
 {
     return distanceData;
 }
-void RPI2_controller::dataReady()
+void gemmerController::dataReady()
 {
     // vent på interrupt
 }
 
-void RPI2_controller::buttonPressed()
+void gemmerController::buttonPressed()
 {
     gamestatus.setStatus(gameStatus::Status::FOUND);
 }
 
-void RPI2_controller::initSPI()
+void gemmerController::initSPI()
 {
     // kald SPI klassen
 }
 
-void RPI2_controller::run() {
+void gemmerController::run() {
     startGame();
 
     while(gameStatus::Status::RUNNING) {
