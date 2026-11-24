@@ -9,13 +9,20 @@ void gemmerController::startGame()
 {
     // send en ack til seeker
     initSPI();
+
     gamestatus.setStatus(gameStatus::Status::RUNNING);
 }
 
-double gemmerController::requestDistanceData()
+gemmerController::status_distance gemmerController::requestData()
 {
-    return distanceData;
+    status_distance resp;
+    resp.state = std::to_string(gamestatus.getStatus());
+    resp.distance = gamedata.getDistanceData();
+
+    return resp;
 }
+
+
 void gemmerController::dataReady()
 {
     // vent på interrupt
@@ -35,7 +42,7 @@ void gemmerController::run() {
     startGame();
 
     while(gameStatus::Status::RUNNING) {
-        double currDistance = requestDistanceData();
+        
         
 
 

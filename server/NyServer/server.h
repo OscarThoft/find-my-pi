@@ -5,15 +5,16 @@
 #include <restinio/all.hpp>
 #include <json_dto/pub.hpp>
 
-// #include "GameStatus.h"
-// #include "GameData.h"
+#include "../../Hider/inc/gameStatus.h"
+#include "../../Hider/inc/gameData.h"
+#include "../../Hider/inc/gemmerController.h"
 
 namespace rr = restinio::router;
 using router_t = rr::express_router_t<>;
 
 class GameHandler {
 public:
-    explicit GameHandler(GameStatus& status, GameData& data);
+    explicit GameHandler(gameStatus& status, gameData& data, gemmerController& controller);
 
     restinio::request_handling_status_t on_gamestart(
         const restinio::request_handle_t& req,
@@ -23,13 +24,16 @@ public:
         const restinio::request_handle_t& req,
         rr::route_params_t params) const;
 
+    void run();
+
 private:
-    GameStatus& m_status;
-    GameData& m_data;
+    gameStatus& m_status;
+    gameData& m_data;
+    gemmerController& m_controller;
 
-    static std::string to_string(GameStatus::Status status);
+    static std::string to_string(gameStatus::Status status);
 
-    struct GameStateOgData {
+    struct GameStateAndData {
         std::string state;
         double distance;
 

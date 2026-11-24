@@ -10,7 +10,6 @@ public:
     bool startGame(int clientSocket); 
     double getData(int clientSocket);
 
-
 private:
     struct GameStateAndData
     {
