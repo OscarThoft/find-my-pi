@@ -3,7 +3,7 @@
 #include <iostream>
 #include "inc/gameData.h"
 #include "inc/gameStatus.h"
-#include "../../server/NyServer/server.h"
+#include "../../server/server.h"
 
 class gemmerController
 {
@@ -21,6 +21,8 @@ public:
     void initSPI();
     void run();
 
+    
+
 private:
     int rawData;
     double distanceData;
@@ -29,5 +31,6 @@ private:
     GameHandler handler{gamestatus, gamedata, *this};
 
 };
+
 
 #endif
