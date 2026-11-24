@@ -1,4 +1,4 @@
-#include "UWBDriver2.h"
+#include "UWBDriver.h"
 #include "DW1000registre.h"
 #include <array>
 #include <cstring>
@@ -138,11 +138,12 @@ bool UWBDriver::init(uint16_t shortAddr)
     ok &= writeValue<uint16_t>(REG_PMSC, SUB_PMSC_CTRL0, 0x0200);
 
     // 4. Ret standardværdierne (User Manual afsnit 2.5.5): kanal 5, 16 MHz PRF, 6,8 Mbit/s
+    ok &= writeValue<uint32_t>(REG_CHAN_CTRL, 0, 0x21040055);
     ok &= writeValue<uint16_t>(REG_AGC_CTRL, SUB_AGC_TUNE1, 0x8870);
     ok &= writeValue<uint32_t>(REG_AGC_CTRL, SUB_AGC_TUNE2, 0x2502A907);
     ok &= writeValue<uint32_t>(REG_DRX_CONF, SUB_DRX_TUNE2, 0x311A002D);
     ok &= writeValue<uint8_t>(REG_LDE_CTRL, SUB_LDE_CFG1, 0x6D);
-    ok &= writeValue<uint16_t>(REG_LDE_CTRL, SUB_LDE_REPC, 0x451E); // præambelkode 4, 6,8 Mbit/s
+    ok &= writeValue<uint16_t>(REG_LDE_CTRL, SUB_LDE_REPC, 0x428E); // præambelkode 4, 6,8 Mbit/s
     ok &= writeValue<uint16_t>(REG_LDE_CTRL, SUB_LDE_CFG2, 0x1607);
     ok &= writeValue<uint32_t>(REG_TX_POWER, 0, 0x0E082848);
     ok &= writeValue<uint32_t>(REG_RF_CONF, SUB_RF_TXCTRL, 0x001E3FE0);
