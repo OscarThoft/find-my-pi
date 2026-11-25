@@ -42,6 +42,7 @@ void gemmerController::run() {
     startGame(); // skal jo ikke være her? den kaldes når server kalder startgame()?
 
     while(gameStatus::Status::RUNNING) {
+
         // skal vidst være
         // while (gamestatus.getStatus() == gameStatus::Status::RUNNING)
         // fordi ellers tjekker den ikke den akutelle gamestatus
@@ -50,7 +51,7 @@ void gemmerController::run() {
         // tjek om data er gyldig? 
 
         // sender IKKE hele structen fordi at server.h ikke kender status_distance structen 
-       // handler.sendData({newData.state, newData.distance});
+       handler.sendData({newData.state, newData.distance});
        
 
     }
