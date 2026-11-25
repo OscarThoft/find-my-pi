@@ -37,9 +37,8 @@ void game_session::setStatus(Status s) {
 
         endTime = duration.count();
 
-    } else if(s == LOST) {
-        status = s;
-    }   
+    }
+     
 }
 
 double game_session::getStartTime() const {
