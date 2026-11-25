@@ -47,8 +47,8 @@ public:
 
 
 
-    // skal være public HVIS send sendData skal bruge det
-     struct GameStateAndData {
+    // GAMEL STRUCT skal være public HVIS send sendData skal bruge det
+     /*struct GameStateAndData {
         std::string state;
         double distance;
 
@@ -58,13 +58,16 @@ public:
             io & json_dto::mandatory("state", state);
             io & json_dto::mandatory("distance", distance);
         }
-    };
 
-     // send ny data UDEN struct 
-    // void sendData(const std::string& state, double distance);
+    }; */
 
-    // eller MED  struct 
-    void sendData(GameStateAndData data);
+   
+     // send ENTEN afstand data ELLER found besked
+    void sendData(double data);
+    void sendData(const std::string& message);
+
+    // GAMMEL MED  struct 
+    // void sendData(GameStateAndData data);
 
 private:
         // web socket

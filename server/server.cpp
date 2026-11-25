@@ -154,10 +154,17 @@ restinio::request_handling_status_t GameHandler::on_live_update(
 	return restinio::request_rejected();
 }
 
-// send ny data 
-void GameHandler::sendData(GameStateAndData data) {
+// send ny distance 
+void GameHandler::sendData(double data) {
     restinio::asio_ns::post(m_ioContext, [this, data]() {
-        sendMessage(json_dto::to_json(data));
+        sendMessage(json_dto::to_json(distance));
+    });
+}
+
+// send string beskeder 
+void GameHandler::sendData(const std::string& message) {
+    restinio::asio_ns::post(m_ioContext, [this, message]() {
+        sendMessage(json_dto::to_json(message));
     });
 }
 
