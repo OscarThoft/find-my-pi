@@ -7,18 +7,16 @@ gemmerController::gemmerController()
 
 void gemmerController::startGame()
 {
-    // send en ack til seeker
-    initSPI();
-
+    uwb.init();
     gamestatus.setStatus(gameStatus::Status::RUNNING);
+    run();
 }
 
-gemmerController::status_distance gemmerController::requestData()
+double gemmerController::requestData()
 {
-    status_distance resp;
-    resp.state = std::to_string(gamestatus.getStatus());
-    resp.distance = gamedata.getDistanceData();
+    double distance = gamedata.getDistanceData();
 
+HEAD
     
     return resp;
 }
@@ -27,35 +25,42 @@ gemmerController::status_distance gemmerController::requestData()
 void gemmerController::dataReady()
 {
     // vent på interrupt
+
+    return distance;
+ 869f4dc7e2684e3e756ede81346ac22ab8b10b8b
 }
 
 void gemmerController::buttonPressed()
 {
-    gamestatus.setStatus(gameStatus::Status::FOUND);
+    handler.sendData("FOUND");
+    gamestatus.setStatus(gameStatus::FOUND);
 }
 
 void gemmerController::initSPI()
 {
-    // kald SPI klassen
+    uwb.init();
 }
 
-void gemmerController::run() {
-    startGame(); // skal jo ikke være her? den kaldes når server kalder startgame()?
+void gemmerController::run()
+{
+    uwb.measure(t);
+    bool flag = 1;
+    while (flag)
+    {
+        while (gamestatus.getStatus() == gameStatus::RUNNING)
+        {
+            gamedata.ProcessData(&t);
+            handler.sendData(gamedata.getDistanceData());
+        }
 
-    while(gameStatus::Status::RUNNING) {
-
-        // skal vidst være
-        // while (gamestatus.getStatus() == gameStatus::Status::RUNNING)
-        // fordi ellers tjekker den ikke den akutelle gamestatus
-        
-        // autp newData = requestData(); 
-        // tjek om data er gyldig? 
-
-        // sender IKKE hele structen fordi at server.h ikke kender status_distance structen 
-       handler.sendData({newData.state, newData.distance});
-       
-
+        if (flag) //(handler.if play() again?) til sara mus
+        {
+            gamestatus.setStatus(gameStatus::RUNNING);
+        }
+        else
+        {
+            uwb.stopUWB();
+            flag = 0;
+        }
     }
-
 }
-
