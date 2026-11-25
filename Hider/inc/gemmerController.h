@@ -4,33 +4,24 @@
 #include "inc/gameData.h"
 #include "inc/gameStatus.h"
 #include "../../server/server.h"
+#include "../../UWB/inc/UWBModule.h"
 
 class gemmerController
 {
 public:
-    struct status_distance {
-        std::string state;
-        double distance;
-    };
-
     gemmerController();
     void startGame();
-    status_distance requestData();
-    void dataReady();
+    double requestData();
     void buttonPressed();
     void initSPI();
     void run();
-
-    
+    Timestamps t;
 
 private:
-    int rawData;
-    double distanceData;
     gameStatus gamestatus;
     gameData gamedata;
     GameHandler handler{gamestatus, gamedata, *this};
-
+    UWBModule uwb; // erstat med rigtige
 };
-
 
 #endif
