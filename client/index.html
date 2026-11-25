@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<!-- functionerne -->
+<!-- axios for http requests -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- jquery for DOM manipulation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- modern tabulator tabel (3. party) -->
+<script src="https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.min.js"></script>
+<link href="https://unpkg.com/tabulator-tables@4.9.3/dist/css/tabulator.min.css" rel="stylesheet">
+
+
+    </head>
+    <body onload="connectWebSocket()">
+
+<script src="script.js"></script>
+
+<p>ID: <input id="id" type="text"></p>
+<p>Date: <input id="date" type="text"></p>
+<p>Time: <input id="time" type="text"></p>
+<p>Place name: <input id="placeName" type="text"></p>
+<p>Latitude: <input id="latitude" type="text"></p>
+<p>Longitude: <input id="longitude" type="text"></p>
+<p>Temperature: <input id="temperature" type="text"></p>
+<p>Humidity: <input id="humidity" type="text"></p>
+
+<input type="button" value="Start Game" onclick="startGame()">
+
+
+<br>
+
+<b> Action: </b>
+<i id="wsupdate"> *changes*</i><br>
+
+
+<table id="weatherTable" border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Place name</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Temperature</th>
+            <th>Humidity</th>
+        </tr>
+    </thead>
+        <tbody id="weatherTableBody">
+    </tbody>
+</table>
+
+
+    </body>
+</html>

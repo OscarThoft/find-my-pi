@@ -13,12 +13,11 @@ set(LLHTTP_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/external/llhttp/llhttp.c
 )
 
-# Byg testserver og testklient som to separate programmer
-add_executable(testServer testServer.cpp ${LLHTTP_SRC})
-add_executable(testClient testClient.cpp)
+# Byg WebSocket-serveren
+add_executable(server server.cpp ${LLHTTP_SRC})
 
 # Serverens RESTinio-afhængigheder
-target_include_directories(testServer PRIVATE
+target_include_directories(server PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/external
     ${CMAKE_CURRENT_SOURCE_DIR}/external/restinio
     ${CMAKE_CURRENT_SOURCE_DIR}/external/asio
@@ -29,11 +28,5 @@ target_include_directories(testServer PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/external/rapidjson
 )
 
-target_compile_definitions(testServer PRIVATE FMT_HEADER_ONLY)
-target_link_libraries(testServer PRIVATE Threads::Threads)
-
-# Klienten bruger kun JSON-bibliotekerne
-target_include_directories(testClient PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/external/json_dto
-    ${CMAKE_CURRENT_SOURCE_DIR}/external/rapidjson
-)
+target_compile_definitions(server PRIVATE FMT_HEADER_ONLY)
+target_link_libraries(server PRIVATE Threads::Threads)
