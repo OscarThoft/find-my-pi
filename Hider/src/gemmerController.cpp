@@ -19,6 +19,7 @@ gemmerController::status_distance gemmerController::requestData()
     resp.state = std::to_string(gamestatus.getStatus());
     resp.distance = gamedata.getDistanceData();
 
+    
     return resp;
 }
 

@@ -1,4 +1,6 @@
 #include "server.h"
+// MIDLERTIDIG UDKOMMENTERET 
+//#include "../Hider/inc/gemmerController.h"
 
 #include <iostream>
 #include <functional>
@@ -10,10 +12,11 @@
 // Med HTTP
 
 // construktor gem referencer til status og data
-GameHandler::GameHandler(gameStatus& status, gameData& data, gemmerController& controller)
+// MIDLERTIDIG UDKOMMENTERET TIL TEST 
+/*GameHandler::GameHandler(gameStatus& status, gameData& data, gemmerController& controller)
         : m_status{status}, m_data{data}, m_controller{controller}
     {}
-
+*/
 // Konverter enum til string
 std::string GameHandler::to_string(gameStatus::Status status)
 {
@@ -48,10 +51,15 @@ restinio::request_handling_status_t GameHandler::on_gamestart( const restinio::r
         rr::route_params_t params)
 {
     // kalder startgame function i gemmercontroller.cpp 
-    m_controller.startGame();
+    // MIDLIGERTIDIG UDKOMMETERET TIL TEST:
+    // m_controller.startGame();
 
     // tekst via websocket til søgere forbundet til /chat
     sendMessage("Spillet starter nu");
+
+    // MIDLERTIDIG TEST 
+    sendData(6.5);
+    sendData("Found");
 
     // HTTP svar 
     auto resp = req->create_response(restinio::status_no_content());
@@ -75,7 +83,6 @@ restinio::request_handling_status_t GameHandler::on_gamestatus(
     return resp.done();
 }
 */
-
 
 // Router
 std::unique_ptr<router_t> make_router(GameHandler& handler)
@@ -157,14 +164,15 @@ restinio::request_handling_status_t GameHandler::on_live_update(
 // send ny distance 
 void GameHandler::sendData(double data) {
     restinio::asio_ns::post(m_ioContext, [this, data]() {
-        sendMessage(json_dto::to_json(distance));
+        sendMessage(std::to_string(data));
     });
 }
 
 // send string beskeder 
-void GameHandler::sendData(const std::string& message) {
+void GameHandler::sendData(const std::string& message)
+{
     restinio::asio_ns::post(m_ioContext, [this, message]() {
-        sendMessage(json_dto::to_json(message));
+        sendMessage(message);
     });
 }
 
@@ -177,4 +185,10 @@ void GameHandler::sendMessage(const std::string& message)
     {
 		wsh->send_message(rws::final_frame, rws::opcode_t::text_frame, message);
 	}
+}
+
+int main() {
+    GameHandler server;
+    server.run();
+    
 }
