@@ -8,18 +8,15 @@ int soegerController::startGame()
     //Etabler forbindelse til serveren
     socket = client.connectToServer();
     if (socket < 0)
-    {
         return -1;
-    }
+    
 
-    if (!client.startGame(socket))
-    {
+    if (!client.startGame(socket)) {
         close(socket);
         return -1;
     }
-
-    //Init UWB
-    initSPI(); 
+    
+    initSPI(); //Init UWB
 
     return 1;
 }

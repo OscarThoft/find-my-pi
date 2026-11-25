@@ -5,13 +5,12 @@ public:
     enum Status {
         INACTIVE,
         RUNNING,
-        FOUND,
-        LOST
+        FOUND
     };
 
     game_session();
 
-    void setStatus(Status s); //INACTIVE, RUNNING, FOUND eller LOST
+    void setStatus(Status s); //INACTIVE, RUNNING eller FOUND 
     Status getStatus() const;
     double getStartTime() const;
     double getEndTime() const;
