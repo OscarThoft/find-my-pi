@@ -1,7 +1,7 @@
 #pragma once
 #include "game_session.h"
 #include "UI.h"
-#include "../../server/NyServer/client.h"
+#include "../../server/client.h"
 
 class soegerController {
 public:
