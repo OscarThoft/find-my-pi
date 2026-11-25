@@ -1,17 +1,31 @@
 #include "gameData.h"
 #include <cstdint>
-#include <bit>
+#include <iostream>
 
 
-void gameData::ProcessData(int64_t t1, int64_t t2, int64_t t3, int64_t t4, int64_t t5, int64_t t6){
+void gameData::ProcessData(const Timestamps& timestamps){
+    //tjekker om tidsværdierne ikke er invalide tal
+    if (timestamps.t1 <= 0 || timestamps.t2 <= 0 || timestamps.t3 <= 0 || timestamps.t4 <= 0 || timestamps.t5 <= 0 || timestamps.t6 <= 0)
+    {
+        std::cout << "Fejl: Alle tidsværdier skal være positive." << std::endl;
+        return;
+    }
+
+    //tjekker om tidsværdierne bliver sendt i rigtig rækkefølge
+    if (timestamps.t1 >= timestamps.t2 || timestamps.t2 >= timestamps.t3 || timestamps.t3 >= timestamps.t4 || timestamps.t4 >= timestamps.t5 || timestamps.t5 >= timestamps.t6)
+    {
+        std::cout << "Fejl: Tidsværdierne skal være i stigende rækkefølge." << std::endl;
+        return;
+    }
+
     //40 bit maske
    constexpr uint64_t MASK_40BIT = 0x000000FFFFFFFFFFULL;
 
     //træk fra i heltal og mask til 40 bit
-    uint64_t T_round_G_raw = (t4 - t1) & MASK_40BIT;
-    uint64_t T_reply_G_raw = (t5 - t4) & MASK_40BIT;
-    uint64_t T_round_S_raw = (t6 - t3) & MASK_40BIT;
-    uint64_t T_reply_S_raw = (t3 - t2) & MASK_40BIT;
+    uint64_t T_round_G_raw = (timestamps.t4 - timestamps.t1) & MASK_40BIT;
+    uint64_t T_reply_G_raw = (timestamps.t5 - timestamps.t4) & MASK_40BIT;
+    uint64_t T_round_S_raw = (timestamps.t6 - timestamps.t3) & MASK_40BIT;
+    uint64_t T_reply_S_raw = (timestamps.t3 - timestamps.t2) & MASK_40BIT;
 
     //konverter derefter til double
     double T_round_G = static_cast<double>(T_round_G_raw);

@@ -4,7 +4,7 @@
 #include "inc/gameData.h"
 #include "inc/gameStatus.h"
 #include "../../server/server.h"
-#include "../../UWB/inc/UWBModule.h"
+#include "timestamps.h"
 
 class gemmerController
 {
@@ -13,15 +13,17 @@ public:
     void startGame();
     double requestData();
     void buttonPressed();
-    void initSPI();
     void run();
     Timestamps t;
+
+    void startServer();
 
 private:
     gameStatus gamestatus;
     gameData gamedata;
     GameHandler handler{gamestatus, gamedata, *this};
-    UWBModule uwb; // erstat med rigtige
+    //UWBModule uwb; // erstat med rigtige
+
 };
 
 #endif

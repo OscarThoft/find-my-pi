@@ -1,13 +1,16 @@
 #include "inc/gemmerController.h"
 
 gemmerController::gemmerController()
-    : rawData(0), distanceData(0.0)
 {
+}
+
+void gemmerController::startServer() {
+    handler.run();
 }
 
 void gemmerController::startGame()
 {
-    uwb.init();
+    //uwb.init();
     gamestatus.setStatus(gameStatus::Status::RUNNING);
     run();
 }
@@ -25,20 +28,15 @@ void gemmerController::buttonPressed()
     gamestatus.setStatus(gameStatus::FOUND);
 }
 
-void gemmerController::initSPI()
-{
-    uwb.init();
-}
-
 void gemmerController::run()
 {
-    uwb.measure(t);
+    //uwb.measure(t);
     bool flag = 1;
     while (flag)
     {
         while (gamestatus.getStatus() == gameStatus::RUNNING)
         {
-            gamedata.ProcessData(&t);
+            gamedata.ProcessData(t);
             handler.sendData(gamedata.getDistanceData());
         }
 
@@ -48,8 +46,10 @@ void gemmerController::run()
         }
         else
         {
-            uwb.stopUWB();
+            //uwb.stopUWB();
             flag = 0;
         }
     }
 }
+
+
