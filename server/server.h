@@ -22,12 +22,7 @@ using ws_registry_t = std::map< std::uint64_t, rws::ws_handle_t >;
 
 class GameHandler {
 public:
-
-    // TIL MIDLERTIDIG TEST:
-    GameHandler() = default;
-
-    // UDKOMMENTERET TIL MIDLERTIDIG TEST:
-    // explicit GameHandler(gameStatus& status, gameData& data, gemmerController& controller);
+    explicit GameHandler(gameStatus& status, gameData& data, gemmerController& controller);
 
     restinio::request_handling_status_t on_gamestart(
         const restinio::request_handle_t& req,
@@ -79,14 +74,11 @@ private:
     // til sendData på event loop??
     restinio::asio_ns::io_context m_ioContext;
 
-    // MIDLERTIDIGT UDKOMMENTERET TIL TEST 
-    // gameStatus& m_status;
-    // gameData& m_data;
-    // gemmerController& m_controller;
+    gameStatus& m_status;
+    gameData& m_data;
+    gemmerController& m_controller;
 
     static std::string to_string(gameStatus::Status status);
-
-   
 
     template<typename RESP>
     static RESP init_resp(RESP resp)

@@ -186,9 +186,3 @@ void GameHandler::sendMessage(const std::string& message)
 		wsh->send_message(rws::final_frame, rws::opcode_t::text_frame, message);
 	}
 }
-
-int main() {
-    GameHandler server;
-    server.run();
-    
-}

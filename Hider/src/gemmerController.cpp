@@ -19,18 +19,7 @@ double gemmerController::requestData()
 {
     double distance = gamedata.getDistanceData();
 
-HEAD
-    
-    return resp;
-}
-
-
-void gemmerController::dataReady()
-{
-    // vent på interrupt
-
     return distance;
- 869f4dc7e2684e3e756ede81346ac22ab8b10b8b
 }
 
 void gemmerController::buttonPressed()

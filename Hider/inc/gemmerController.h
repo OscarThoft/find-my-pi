@@ -23,7 +23,6 @@ private:
     gameData gamedata;
     GameHandler handler{gamestatus, gamedata, *this};
     //UWBModule uwb; // erstat med rigtige
-
 };
 
 #endif
